@@ -1,0 +1,76 @@
+letter	page.pdf	1	PageSize=Letter
+photo-mode	page.pdf	1	PageSize=Letter FXDocumentType=Photo
+presentation-mode	page.pdf	1	PageSize=Letter FXDocumentType=Presentation
+web-mode	page.pdf	1	PageSize=Letter FXDocumentType=Web
+pop-mode	page.pdf	1	PageSize=Letter FXDocumentType=POP
+color-correction-off	page.pdf	1	PageSize=Letter FXDocumentType=Off
+black	page.pdf	1	PageSize=Letter FXColorMode=Black
+black-correction-off	page.pdf	1	PageSize=Letter FXColorMode=Black FXDocumentType=Off
+tray-auto	page.pdf	1	PageSize=Letter FXInputSlot=AutoSelect
+tray-manual	page.pdf	1	PageSize=Letter FXInputSlot=BypassTray
+tray-2	page.pdf	1	PageSize=Letter Option1=1+2Tray-SH FXInputSlot=2ndTray-H
+a4	page.pdf	1	PageSize=A4
+legal	page.pdf	1	PageSize=Legal
+a5	page.pdf	1	PageSize=A5
+executive	page.pdf	1	PageSize=Executive
+b5	page.pdf	1	PageSize=B5
+folio	page.pdf	1	PageSize=FanFoldGermanLegal FXInputSlot=BypassTray
+postcard	page.pdf	1	PageSize=FXPostcard FXInputSlot=BypassTray MediaType=Postcard
+envelope-com10	page.pdf	1	PageSize=Env10 FXInputSlot=BypassTray MediaType=Envelope
+envelope-monarch	page.pdf	1	PageSize=EnvMonarch FXInputSlot=BypassTray MediaType=Envelope
+envelope-monarch-rotated	page.pdf	1	PageSize=FXEnvMonarchRotated FXInputSlot=BypassTray MediaType=Envelope
+envelope-dl	page.pdf	1	PageSize=EnvDL FXInputSlot=BypassTray MediaType=Envelope
+envelope-dl-rotated	page.pdf	1	PageSize=FXEnvDLRotated FXInputSlot=BypassTray MediaType=Envelope
+envelope-c5	page.pdf	1	PageSize=EnvC5 FXInputSlot=BypassTray MediaType=Envelope
+envelope-c6-rotated	page.pdf	1	PageSize=FXEnvYou2Rotated FXInputSlot=BypassTray MediaType=Envelope
+envelope-youkei3-rotated	page.pdf	1	PageSize=FXEnvYou3Rotated FXInputSlot=BypassTray MediaType=Envelope
+envelope-choukei3	page.pdf	1	PageSize=EnvChou3 FXInputSlot=BypassTray MediaType=Envelope
+custom-400x600	page.pdf	1	PageSize=Custom.400x600 FXInputSlot=BypassTray
+custom-401x601	page.pdf	1	PageSize=Custom.401x601 FXInputSlot=BypassTray
+custom-401x601-300dpi	page.pdf	1	PageSize=Custom.401x601 FXInputSlot=BypassTray FXOutputMode=300x300
+custom-fractional	page.pdf	1	PageSize=Custom.333.3x500.7 FXInputSlot=BypassTray
+custom-largest	page.pdf	1	PageSize=Custom.612x1008 FXInputSlot=BypassTray
+custom-smallest-black	page.pdf	1	PageSize=Custom.255x396 FXInputSlot=BypassTray FXColorMode=Black
+duplex-long-edge	page.pdf	1	PageSize=Letter Duplex=DuplexNoTumble
+duplex-short-edge	page.pdf	1	PageSize=Letter Duplex=DuplexTumble
+media-thick	page.pdf	1	PageSize=Letter MediaType=ThickPaper FXInputSlot=BypassTray
+media-thick-black	page.pdf	1	PageSize=Letter FXColorMode=Black MediaType=ThickPaper FXInputSlot=BypassTray
+media-labels	page.pdf	1	PageSize=Letter MediaType=LabelPaper FXInputSlot=BypassTray
+media-transparency	page.pdf	1	PageSize=Letter MediaType=Transparency FXInputSlot=BypassTray
+media-coated2-back	page.pdf	1	PageSize=Letter MediaType=CoatingPaper2Back FXInputSlot=BypassTray
+preferred-fine-substitute-smh	page.pdf	1	PageSize=Letter FXPreferredMediaType=FinePaper FXSubPaperSelection=SMH
+substitute-off	page.pdf	1	PageSize=Letter FXSubPaperSelection=Policy2
+toner-saver	page.pdf	1	PageSize=Letter FXTonerSaver=True
+a4-300dpi	page.pdf	1	PageSize=A4 FXOutputMode=300x300
+letter-300dpi	page.pdf	1	PageSize=Letter FXOutputMode=300x300
+letter-300dpi-black	page.pdf	1	PageSize=Letter FXOutputMode=300x300 FXColorMode=Black
+copies-3	page.pdf	3	PageSize=Letter
+copies-3-collated	page.pdf	3	PageSize=Letter Collate=True
+multi	multi.pdf	1	PageSize=Letter
+multi-black	multi.pdf	1	PageSize=Letter FXColorMode=Black
+multi-duplex-long-edge	multi.pdf	1	PageSize=Letter Duplex=DuplexNoTumble
+multi-duplex-short-edge	multi.pdf	1	PageSize=Letter Duplex=DuplexTumble
+multi-rotated	multi.pdf	1	PageSize=Letter FXTurnPage=True
+multi-rotated-duplex-long-edge	multi.pdf	1	PageSize=Letter FXTurnPage=True Duplex=DuplexNoTumble
+multi-rotated-duplex-short-edge	multi.pdf	1	PageSize=Letter FXTurnPage=True Duplex=DuplexTumble
+multi-black-duplex-long-edge	multi.pdf	1	PageSize=Letter FXColorMode=Black Duplex=DuplexNoTumble
+multi-copies-2	multi.pdf	2	PageSize=Letter
+multi-copies-2-collated	multi.pdf	2	PageSize=Letter Collate=True
+multi-copies-2-collated-duplex	multi.pdf	2	PageSize=Letter Collate=True Duplex=DuplexNoTumble
+multi-copies-3-collated-duplex-short	multi.pdf	3	PageSize=Letter Collate=True Duplex=DuplexTumble
+blank-pages	blank.pdf	1	PageSize=Letter
+skip-blank-pages	blank.pdf	1	PageSize=Letter FXSkip=True
+skip-blank-pages-black	blank.pdf	1	PageSize=Letter FXSkip=True FXColorMode=Black
+photo-small	photo.pdf	1	PageSize=Custom.180x180 FXInputSlot=BypassTray
+photo-small-photo-mode	photo.pdf	1	PageSize=Custom.180x180 FXInputSlot=BypassTray FXDocumentType=Photo
+photo-small-black	photo.pdf	1	PageSize=Custom.180x180 FXInputSlot=BypassTray FXColorMode=Black
+photo-landscape	photo.pdf	1	PageSize=Custom.300x200 FXInputSlot=BypassTray
+photo-300dpi	photo.pdf	1	PageSize=Custom.200x300 FXInputSlot=BypassTray FXOutputMode=300x300
+photo-300dpi-black	photo.pdf	1	PageSize=Custom.200x300 FXInputSlot=BypassTray FXOutputMode=300x300 FXColorMode=Black
+photo-correction-off	photo.pdf	1	PageSize=Custom.180x180 FXInputSlot=BypassTray FXDocumentType=Off
+photo-black-correction-off	photo.pdf	1	PageSize=Custom.180x180 FXInputSlot=BypassTray FXColorMode=Black FXDocumentType=Off
+photo-presentation-rotated	photo.pdf	1	PageSize=Custom.180x180 FXInputSlot=BypassTray FXDocumentType=Presentation FXTurnPage=True
+noise	noise.pdf	1	PageSize=Custom.144x144 FXInputSlot=BypassTray
+noise-black	noise.pdf	1	PageSize=Custom.144x144 FXInputSlot=BypassTray FXColorMode=Black
+noise-300dpi	noise.pdf	1	PageSize=Custom.144x144 FXInputSlot=BypassTray FXOutputMode=300x300
+noise-web	noise.pdf	1	PageSize=Custom.144x144 FXInputSlot=BypassTray FXDocumentType=Web

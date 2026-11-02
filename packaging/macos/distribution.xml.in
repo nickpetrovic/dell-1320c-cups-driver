@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="2">
+    <title>Dell Color Laser 1320c Driver @VERSION@</title>
+    <license file="LICENSE.txt" mime-type="text/plain"/>
+    <conclusion file="conclusion.html" mime-type="text/html"/>
+    <options customize="never" require-scripts="false" hostArchitectures="arm64,x86_64"/>
+    <domains enable_anywhere="false" enable_currentUserHome="false" enable_localSystem="true"/>
+    <volume-check>
+        <allowed-os-versions>
+            <os-version min="13.3"/>
+        </allowed-os-versions>
+    </volume-check>
+    <choices-outline>
+        <line choice="driver"/>
+    </choices-outline>
+    <choice id="driver" visible="false">
+        <pkg-ref id="@PACKAGE_ID@"/>
+    </choice>
+    <pkg-ref id="@PACKAGE_ID@" version="@VERSION@" onConclusion="none">driver.pkg</pkg-ref>
+</installer-gui-script>

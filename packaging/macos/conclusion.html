@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body { font: 13px -apple-system, sans-serif; }
+code { font: 12px ui-monospace, monospace; }
+</style>
+</head>
+<body>
+<h2>The driver is installed</h2>
+<p>To add your printer, open Terminal and run the following command, with your printer's address in place of the example:</p>
+<p><code>sudo dell1320c add 192.168.0.80 --default</code></p>
+<p>This selects Tray 1 so that jobs don't go to the manual feed slot. You can also add the printer in System Settings &rarr; Printers &amp; Scanners and choose Dell Color Laser 1320c as the driver.</p>
+<p>If print queues already used this driver, the installer updated them to the new version. If CUPS was not running, update them later with <code>sudo dell1320c refresh</code>.</p>
+<p>To remove the driver later, run <code>sudo dell1320c uninstall</code>.</p>
+</body>
+</html>

@@ -1,0 +1,91 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  version:
+    name: Check the version
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Compare the tag with VERSION
+        run: |
+          version=$(cat VERSION)
+          if [ "${GITHUB_REF_NAME#v}" != "$version" ]; then
+            echo "the tag $GITHUB_REF_NAME does not match VERSION ($version)" >&2
+            exit 1
+          fi
+          heading="## $version ("
+          if ! awk -v heading="$heading" 'index($0, heading) == 1 && index($0, heading "unreleased)") != 1 { found = 1 } END { exit !found }' CHANGELOG.md; then
+            echo "CHANGELOG.md has no released entry for $version" >&2
+            exit 1
+          fi
+
+  macos:
+    name: macOS installer
+    needs: version
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install xz
+        run: command -v xz >/dev/null || brew install xz
+      - name: Build and test
+        run: make WERROR=1 check
+      - name: Build the installer
+        run: make WERROR=1 pkg
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: macos-installer
+          path: build/dist/*.pkg
+
+  linux:
+    name: Linux packages (${{ matrix.architecture }})
+    needs: version
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-26.04
+          - architecture: arm64
+            runner: ubuntu-26.04-arm
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Build the packages
+        run: make linux-packages ARCHITECTURES=${{ matrix.architecture }}
+      - name: Install the packages and print through CUPS
+        run: make package-test
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: linux-packages-${{ matrix.architecture }}
+          path: |
+            build/dist/*.deb
+            build/dist/*.rpm
+            build/dist/*.tar.gz
+
+  publish:
+    name: Publish the release
+    needs: [macos, linux]
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          path: packages
+          merge-multiple: true
+      - name: Create the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" packages/* --repo "$GITHUB_REPOSITORY" --title "$GITHUB_REF_NAME" --generate-notes

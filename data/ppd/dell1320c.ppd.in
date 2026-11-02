@@ -1,0 +1,1060 @@
+*PPD-Adobe: "4.3"
+*FormatVersion: "4.3"
+*FileVersion: "@VERSION@"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "DELL1320.PPD"
+*Product: "(Dell Color Laser 1320c)"
+*Manufacturer: "Dell"
+*ModelName: "Dell Color Laser 1320c"
+*ShortNickName: "Dell Color Laser 1320c"
+*NickName: "Dell Color Laser 1320c"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: True
+*DefaultColorSpace: CMYK
+*FileSystem: False
+*TTRasterizer: Type42
+*LandscapeOrientation: Minus90
+*1284DeviceID: "MFG:Dell;MDL:Color Laser 1320c;CMD:PJL,RASTER,DOWNLOAD,HBPL,NEXTC;CLS:PRINTER;"
+*cupsVersion: 1.2
+*cupsFilter: "application/vnd.cups-raster 0 @CUPS_FILTER@"
+*cupsManualCopies: False
+*cupsSingleFile: True
+*cupsSNMPSupplies: False
+*APSupportsCustomColorMatching: True
+*DefaultResolution: 600dpi
+
+*OpenGroup: InstallableOptions/Installable Options
+*OpenUI *InstalledMemory/Installed Memory: PickOne
+*OrderDependency: 10 AnySetup *InstalledMemory
+*DefaultInstalledMemory: 64Meg
+*InstalledMemory 64Meg/64 MB: ""
+*InstalledMemory 128Meg/128 MB: ""
+*InstalledMemory 192Meg/192 MB: ""
+*InstalledMemory 320Meg/320 MB: ""
+*InstalledMemory 576Meg/576 MB: ""
+*CloseUI: *InstalledMemory
+
+*OpenUI *Option1/Paper Trays: PickOne
+*OrderDependency: 10 AnySetup *Option1
+*DefaultOption1: 1Tray-S
+*Option1 None/None: ""
+*Option1 1Tray-S/Tray 1 (250 Sheets): ""
+*Option1 1Tray-H/Tray 1 (500 Sheets): ""
+*Option1 1+2Tray-SH/Tray 1 (250 Sheets) and Tray 2 (500 Sheets): ""
+*CloseUI: *Option1
+
+*CloseGroup: InstallableOptions
+
+*UIConstraints: *Option1 None *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *Option1 None
+*UIConstraints: *Option1 None *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *Option1 None
+*UIConstraints: *Option1 1Tray-H *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *Option1 1Tray-H
+*UIConstraints: *Option1 None *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *Option1 None
+*UIConstraints: *Option1 1Tray-S *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *Option1 1Tray-S
+*UIConstraints: *Option1 1+2Tray-SH *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *Option1 1+2Tray-SH
+*UIConstraints: *Option1 None *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *Option1 None
+*UIConstraints: *Option1 1Tray-S *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *Option1 1Tray-S
+*UIConstraints: *Option1 1Tray-H *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *Option1 1Tray-H
+*UIConstraints: *PageSize Legal *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize Legal
+*UIConstraints: *PageSize Legal *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageSize Legal
+*UIConstraints: *PageSize Legal *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize Legal
+*UIConstraints: *PageSize Legal *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize Legal
+*UIConstraints: *PageSize Executive *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize Executive
+*UIConstraints: *PageSize Executive *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize Executive
+*UIConstraints: *PageSize Executive *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize Executive
+*UIConstraints: *PageSize FanFoldGermanLegal *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize FanFoldGermanLegal
+*UIConstraints: *PageSize FanFoldGermanLegal *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageSize FanFoldGermanLegal
+*UIConstraints: *PageSize FanFoldGermanLegal *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize FanFoldGermanLegal
+*UIConstraints: *PageSize FanFoldGermanLegal *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize FanFoldGermanLegal
+*UIConstraints: *PageSize A5 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize A5
+*UIConstraints: *PageSize A5 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize A5
+*UIConstraints: *PageSize A5 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize A5
+*UIConstraints: *PageSize A5 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageSize A5
+*UIConstraints: *PageSize A5 *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageSize A5
+*UIConstraints: *PageSize B5 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize B5
+*UIConstraints: *PageSize B5 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize B5
+*UIConstraints: *PageSize B5 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize B5
+*UIConstraints: *PageSize Env10 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize Env10
+*UIConstraints: *PageSize Env10 *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageSize Env10
+*UIConstraints: *PageSize Env10 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize Env10
+*UIConstraints: *PageSize Env10 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize Env10
+*UIConstraints: *PageSize Env10 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageSize Env10
+*UIConstraints: *PageSize Env10 *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageSize Env10
+*UIConstraints: *PageSize EnvMonarch *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageSize EnvMonarch
+*UIConstraints: *PageSize FXEnvMonarchRotated *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize EnvDL *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageSize EnvDL
+*UIConstraints: *PageSize FXEnvDLRotated *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize EnvC5 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageSize EnvC5
+*UIConstraints: *PageSize FXEnvYou2Rotated *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize EnvChou3 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageSize EnvChou3
+*UIConstraints: *PageSize FXPostcard *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageSize FXPostcard
+*UIConstraints: *PageRegion Legal *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion Legal
+*UIConstraints: *PageRegion Legal *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageRegion Legal
+*UIConstraints: *PageRegion Legal *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion Legal
+*UIConstraints: *PageRegion Legal *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion Legal
+*UIConstraints: *PageRegion Executive *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion Executive
+*UIConstraints: *PageRegion Executive *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion Executive
+*UIConstraints: *PageRegion Executive *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion Executive
+*UIConstraints: *PageRegion FanFoldGermanLegal *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion FanFoldGermanLegal
+*UIConstraints: *PageRegion FanFoldGermanLegal *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageRegion FanFoldGermanLegal
+*UIConstraints: *PageRegion FanFoldGermanLegal *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion FanFoldGermanLegal
+*UIConstraints: *PageRegion FanFoldGermanLegal *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion FanFoldGermanLegal
+*UIConstraints: *PageRegion A5 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion A5
+*UIConstraints: *PageRegion A5 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion A5
+*UIConstraints: *PageRegion A5 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion A5
+*UIConstraints: *PageRegion A5 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion A5
+*UIConstraints: *PageRegion A5 *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageRegion A5
+*UIConstraints: *PageRegion B5 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion B5
+*UIConstraints: *PageRegion B5 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion B5
+*UIConstraints: *PageRegion B5 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion B5
+*UIConstraints: *PageRegion Env10 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion Env10
+*UIConstraints: *PageRegion Env10 *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageRegion Env10
+*UIConstraints: *PageRegion Env10 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion Env10
+*UIConstraints: *PageRegion Env10 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion Env10
+*UIConstraints: *PageRegion Env10 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion Env10
+*UIConstraints: *PageRegion Env10 *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageRegion Env10
+*UIConstraints: *PageRegion EnvMonarch *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion EnvMonarch
+*UIConstraints: *PageRegion EnvMonarch *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageRegion EnvMonarch
+*UIConstraints: *PageRegion EnvMonarch *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion EnvMonarch
+*UIConstraints: *PageRegion EnvMonarch *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion EnvMonarch
+*UIConstraints: *PageRegion EnvMonarch *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion EnvMonarch
+*UIConstraints: *PageRegion EnvMonarch *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageRegion EnvMonarch
+*UIConstraints: *PageRegion FXEnvMonarchRotated *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion FXEnvMonarchRotated
+*UIConstraints: *PageRegion FXEnvMonarchRotated *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageRegion FXEnvMonarchRotated
+*UIConstraints: *PageRegion FXEnvMonarchRotated *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion FXEnvMonarchRotated
+*UIConstraints: *PageRegion FXEnvMonarchRotated *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion FXEnvMonarchRotated
+*UIConstraints: *PageRegion FXEnvMonarchRotated *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion FXEnvMonarchRotated
+*UIConstraints: *PageRegion FXEnvMonarchRotated *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageRegion FXEnvMonarchRotated
+*UIConstraints: *PageRegion EnvDL *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion EnvDL
+*UIConstraints: *PageRegion EnvDL *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageRegion EnvDL
+*UIConstraints: *PageRegion EnvDL *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion EnvDL
+*UIConstraints: *PageRegion EnvDL *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion EnvDL
+*UIConstraints: *PageRegion EnvDL *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion EnvDL
+*UIConstraints: *PageRegion EnvDL *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageRegion EnvDL
+*UIConstraints: *PageRegion FXEnvDLRotated *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion FXEnvDLRotated
+*UIConstraints: *PageRegion FXEnvDLRotated *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageRegion FXEnvDLRotated
+*UIConstraints: *PageRegion FXEnvDLRotated *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion FXEnvDLRotated
+*UIConstraints: *PageRegion FXEnvDLRotated *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion FXEnvDLRotated
+*UIConstraints: *PageRegion FXEnvDLRotated *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion FXEnvDLRotated
+*UIConstraints: *PageRegion FXEnvDLRotated *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageRegion FXEnvDLRotated
+*UIConstraints: *PageRegion EnvC5 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion EnvC5
+*UIConstraints: *PageRegion EnvC5 *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageRegion EnvC5
+*UIConstraints: *PageRegion EnvC5 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion EnvC5
+*UIConstraints: *PageRegion EnvC5 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion EnvC5
+*UIConstraints: *PageRegion EnvC5 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion EnvC5
+*UIConstraints: *PageRegion EnvC5 *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageRegion EnvC5
+*UIConstraints: *PageRegion FXEnvYou2Rotated *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion FXEnvYou2Rotated
+*UIConstraints: *PageRegion FXEnvYou2Rotated *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageRegion FXEnvYou2Rotated
+*UIConstraints: *PageRegion FXEnvYou2Rotated *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion FXEnvYou2Rotated
+*UIConstraints: *PageRegion FXEnvYou2Rotated *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion FXEnvYou2Rotated
+*UIConstraints: *PageRegion FXEnvYou2Rotated *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion FXEnvYou2Rotated
+*UIConstraints: *PageRegion FXEnvYou2Rotated *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageRegion FXEnvYou2Rotated
+*UIConstraints: *PageRegion FXEnvYou3Rotated *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion FXEnvYou3Rotated
+*UIConstraints: *PageRegion FXEnvYou3Rotated *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageRegion FXEnvYou3Rotated
+*UIConstraints: *PageRegion FXEnvYou3Rotated *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion FXEnvYou3Rotated
+*UIConstraints: *PageRegion FXEnvYou3Rotated *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion FXEnvYou3Rotated
+*UIConstraints: *PageRegion FXEnvYou3Rotated *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion FXEnvYou3Rotated
+*UIConstraints: *PageRegion FXEnvYou3Rotated *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageRegion FXEnvYou3Rotated
+*UIConstraints: *PageRegion EnvChou3 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion EnvChou3
+*UIConstraints: *PageRegion EnvChou3 *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageRegion EnvChou3
+*UIConstraints: *PageRegion EnvChou3 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion EnvChou3
+*UIConstraints: *PageRegion EnvChou3 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion EnvChou3
+*UIConstraints: *PageRegion EnvChou3 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion EnvChou3
+*UIConstraints: *PageRegion EnvChou3 *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageRegion EnvChou3
+*UIConstraints: *PageRegion FXPostcard *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *PageRegion FXPostcard
+*UIConstraints: *PageRegion FXPostcard *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *PageRegion FXPostcard
+*UIConstraints: *PageRegion FXPostcard *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *PageRegion FXPostcard
+*UIConstraints: *PageRegion FXPostcard *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *PageRegion FXPostcard
+*UIConstraints: *PageRegion FXPostcard *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion FXPostcard
+*UIConstraints: *PageRegion FXPostcard *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *PageRegion FXPostcard
+*UIConstraints: *MediaType Stationary *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType Stationary
+*UIConstraints: *MediaType StationaryBack *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType StationaryBack
+*UIConstraints: *MediaType FinePaper *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType FinePaper
+*UIConstraints: *MediaType FinePaperBack *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType FinePaperBack
+*UIConstraints: *MediaType Postcard *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType Postcard
+*UIConstraints: *MediaType PostcardBack *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType PostcardBack
+*UIConstraints: *MediaType Envelope *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType Envelope
+*UIConstraints: *MediaType ThickPaper *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType ThickPaper
+*UIConstraints: *MediaType ThickPaperBack *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType ThickPaperBack
+*UIConstraints: *MediaType ThickPaper2 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType ThickPaper2
+*UIConstraints: *MediaType ThickPaper2Back *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType ThickPaper2Back
+*UIConstraints: *MediaType Transparency *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType Transparency
+*UIConstraints: *MediaType LabelPaper *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType LabelPaper
+*UIConstraints: *MediaType CoatingPaper1 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1Back *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper2 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType CoatingPaper2
+*UIConstraints: *MediaType CoatingPaper2Back *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType CoatingPaper2Back
+*UIConstraints: *MediaType CoatingPaper3 *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType CoatingPaper3
+*UIConstraints: *MediaType CoatingPaper3Back *FXInputSlot AutoSelect
+*UIConstraints: *FXInputSlot AutoSelect *MediaType CoatingPaper3Back
+*UIConstraints: *MediaType Stationary *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType Stationary
+*UIConstraints: *MediaType StationaryBack *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType StationaryBack
+*UIConstraints: *MediaType FinePaper *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType FinePaper
+*UIConstraints: *MediaType FinePaperBack *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType FinePaperBack
+*UIConstraints: *MediaType Postcard *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType Postcard
+*UIConstraints: *MediaType PostcardBack *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType PostcardBack
+*UIConstraints: *MediaType Envelope *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType Envelope
+*UIConstraints: *MediaType ThickPaper *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType ThickPaper
+*UIConstraints: *MediaType ThickPaperBack *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType ThickPaperBack
+*UIConstraints: *MediaType ThickPaper2 *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType ThickPaper2
+*UIConstraints: *MediaType ThickPaper2Back *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType ThickPaper2Back
+*UIConstraints: *MediaType Transparency *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType Transparency
+*UIConstraints: *MediaType LabelPaper *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType LabelPaper
+*UIConstraints: *MediaType CoatingPaper1 *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1Back *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper2 *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType CoatingPaper2
+*UIConstraints: *MediaType CoatingPaper2Back *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType CoatingPaper2Back
+*UIConstraints: *MediaType CoatingPaper3 *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType CoatingPaper3
+*UIConstraints: *MediaType CoatingPaper3Back *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *MediaType CoatingPaper3Back
+*UIConstraints: *MediaType Stationary *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType Stationary
+*UIConstraints: *MediaType StationaryBack *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType StationaryBack
+*UIConstraints: *MediaType FinePaper *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType FinePaper
+*UIConstraints: *MediaType FinePaperBack *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType FinePaperBack
+*UIConstraints: *MediaType Postcard *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType Postcard
+*UIConstraints: *MediaType PostcardBack *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType PostcardBack
+*UIConstraints: *MediaType Envelope *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType Envelope
+*UIConstraints: *MediaType ThickPaper *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType ThickPaper
+*UIConstraints: *MediaType ThickPaperBack *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType ThickPaperBack
+*UIConstraints: *MediaType ThickPaper2 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType ThickPaper2
+*UIConstraints: *MediaType ThickPaper2Back *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType ThickPaper2Back
+*UIConstraints: *MediaType Transparency *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType Transparency
+*UIConstraints: *MediaType LabelPaper *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType LabelPaper
+*UIConstraints: *MediaType CoatingPaper1 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1Back *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper2 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType CoatingPaper2
+*UIConstraints: *MediaType CoatingPaper2Back *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType CoatingPaper2Back
+*UIConstraints: *MediaType CoatingPaper3 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType CoatingPaper3
+*UIConstraints: *MediaType CoatingPaper3Back *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *MediaType CoatingPaper3Back
+*UIConstraints: *MediaType Stationary *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType Stationary
+*UIConstraints: *MediaType StationaryBack *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType StationaryBack
+*UIConstraints: *MediaType FinePaper *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType FinePaper
+*UIConstraints: *MediaType FinePaperBack *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType FinePaperBack
+*UIConstraints: *MediaType Postcard *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType Postcard
+*UIConstraints: *MediaType PostcardBack *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType PostcardBack
+*UIConstraints: *MediaType Envelope *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType Envelope
+*UIConstraints: *MediaType ThickPaper *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType ThickPaper
+*UIConstraints: *MediaType ThickPaperBack *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType ThickPaperBack
+*UIConstraints: *MediaType ThickPaper2 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType ThickPaper2
+*UIConstraints: *MediaType ThickPaper2Back *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType ThickPaper2Back
+*UIConstraints: *MediaType Transparency *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType Transparency
+*UIConstraints: *MediaType LabelPaper *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType LabelPaper
+*UIConstraints: *MediaType CoatingPaper1 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1Back *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper2 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType CoatingPaper2
+*UIConstraints: *MediaType CoatingPaper2Back *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType CoatingPaper2Back
+*UIConstraints: *MediaType CoatingPaper3 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType CoatingPaper3
+*UIConstraints: *MediaType CoatingPaper3Back *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *MediaType CoatingPaper3Back
+*UIConstraints: *MediaType StationaryBack *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType StationaryBack
+*UIConstraints: *MediaType StationaryBack *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType StationaryBack
+*UIConstraints: *MediaType FinePaperBack *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType FinePaperBack
+*UIConstraints: *MediaType FinePaperBack *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType FinePaperBack
+*UIConstraints: *MediaType Postcard *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType Postcard
+*UIConstraints: *MediaType Postcard *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType Postcard
+*UIConstraints: *MediaType PostcardBack *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType PostcardBack
+*UIConstraints: *MediaType PostcardBack *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType PostcardBack
+*UIConstraints: *MediaType Envelope *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType Envelope
+*UIConstraints: *MediaType Envelope *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType Envelope
+*UIConstraints: *MediaType ThickPaper *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType ThickPaper
+*UIConstraints: *MediaType ThickPaper *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType ThickPaper
+*UIConstraints: *MediaType ThickPaperBack *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType ThickPaperBack
+*UIConstraints: *MediaType ThickPaperBack *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType ThickPaperBack
+*UIConstraints: *MediaType ThickPaper2 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType ThickPaper2
+*UIConstraints: *MediaType ThickPaper2 *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType ThickPaper2
+*UIConstraints: *MediaType ThickPaper2Back *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType ThickPaper2Back
+*UIConstraints: *MediaType ThickPaper2Back *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType ThickPaper2Back
+*UIConstraints: *MediaType Transparency *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType Transparency
+*UIConstraints: *MediaType Transparency *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType Transparency
+*UIConstraints: *MediaType LabelPaper *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType LabelPaper
+*UIConstraints: *MediaType LabelPaper *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType LabelPaper
+*UIConstraints: *MediaType CoatingPaper1Back *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper1Back *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper2 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType CoatingPaper2
+*UIConstraints: *MediaType CoatingPaper2 *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType CoatingPaper2
+*UIConstraints: *MediaType CoatingPaper2Back *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType CoatingPaper2Back
+*UIConstraints: *MediaType CoatingPaper2Back *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType CoatingPaper2Back
+*UIConstraints: *MediaType CoatingPaper3 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType CoatingPaper3
+*UIConstraints: *MediaType CoatingPaper3 *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType CoatingPaper3
+*UIConstraints: *MediaType CoatingPaper3Back *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble *MediaType CoatingPaper3Back
+*UIConstraints: *MediaType CoatingPaper3Back *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType CoatingPaper3Back
+*UIConstraints: *PageSize Env10 *MediaType Default
+*UIConstraints: *MediaType Default *PageSize Env10
+*UIConstraints: *PageSize Env10 *MediaType Stationary
+*UIConstraints: *MediaType Stationary *PageSize Env10
+*UIConstraints: *PageSize Env10 *MediaType StationaryBack
+*UIConstraints: *MediaType StationaryBack *PageSize Env10
+*UIConstraints: *PageSize Env10 *MediaType FinePaper
+*UIConstraints: *MediaType FinePaper *PageSize Env10
+*UIConstraints: *PageSize Env10 *MediaType FinePaperBack
+*UIConstraints: *MediaType FinePaperBack *PageSize Env10
+*UIConstraints: *PageSize Env10 *MediaType Postcard
+*UIConstraints: *MediaType Postcard *PageSize Env10
+*UIConstraints: *PageSize Env10 *MediaType PostcardBack
+*UIConstraints: *MediaType PostcardBack *PageSize Env10
+*UIConstraints: *PageSize Env10 *MediaType Transparency
+*UIConstraints: *MediaType Transparency *PageSize Env10
+*UIConstraints: *PageSize Env10 *MediaType LabelPaper
+*UIConstraints: *MediaType LabelPaper *PageSize Env10
+*UIConstraints: *PageSize Env10 *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1 *PageSize Env10
+*UIConstraints: *PageSize Env10 *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper1Back *PageSize Env10
+*UIConstraints: *PageSize EnvMonarch *MediaType Default
+*UIConstraints: *MediaType Default *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *MediaType Stationary
+*UIConstraints: *MediaType Stationary *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *MediaType StationaryBack
+*UIConstraints: *MediaType StationaryBack *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *MediaType FinePaper
+*UIConstraints: *MediaType FinePaper *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *MediaType FinePaperBack
+*UIConstraints: *MediaType FinePaperBack *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *MediaType Postcard
+*UIConstraints: *MediaType Postcard *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *MediaType PostcardBack
+*UIConstraints: *MediaType PostcardBack *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *MediaType Transparency
+*UIConstraints: *MediaType Transparency *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *MediaType LabelPaper
+*UIConstraints: *MediaType LabelPaper *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1 *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper1Back *PageSize EnvMonarch
+*UIConstraints: *PageSize FXEnvMonarchRotated *MediaType Default
+*UIConstraints: *MediaType Default *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *MediaType Stationary
+*UIConstraints: *MediaType Stationary *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *MediaType StationaryBack
+*UIConstraints: *MediaType StationaryBack *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *MediaType FinePaper
+*UIConstraints: *MediaType FinePaper *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *MediaType FinePaperBack
+*UIConstraints: *MediaType FinePaperBack *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *MediaType Postcard
+*UIConstraints: *MediaType Postcard *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *MediaType PostcardBack
+*UIConstraints: *MediaType PostcardBack *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *MediaType Transparency
+*UIConstraints: *MediaType Transparency *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *MediaType LabelPaper
+*UIConstraints: *MediaType LabelPaper *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1 *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize FXEnvMonarchRotated *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper1Back *PageSize FXEnvMonarchRotated
+*UIConstraints: *PageSize EnvDL *MediaType Default
+*UIConstraints: *MediaType Default *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *MediaType Stationary
+*UIConstraints: *MediaType Stationary *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *MediaType StationaryBack
+*UIConstraints: *MediaType StationaryBack *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *MediaType FinePaper
+*UIConstraints: *MediaType FinePaper *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *MediaType FinePaperBack
+*UIConstraints: *MediaType FinePaperBack *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *MediaType Postcard
+*UIConstraints: *MediaType Postcard *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *MediaType PostcardBack
+*UIConstraints: *MediaType PostcardBack *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *MediaType Transparency
+*UIConstraints: *MediaType Transparency *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *MediaType LabelPaper
+*UIConstraints: *MediaType LabelPaper *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1 *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper1Back *PageSize EnvDL
+*UIConstraints: *PageSize FXEnvDLRotated *MediaType Default
+*UIConstraints: *MediaType Default *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *MediaType Stationary
+*UIConstraints: *MediaType Stationary *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *MediaType StationaryBack
+*UIConstraints: *MediaType StationaryBack *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *MediaType FinePaper
+*UIConstraints: *MediaType FinePaper *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *MediaType FinePaperBack
+*UIConstraints: *MediaType FinePaperBack *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *MediaType Postcard
+*UIConstraints: *MediaType Postcard *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *MediaType PostcardBack
+*UIConstraints: *MediaType PostcardBack *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *MediaType Transparency
+*UIConstraints: *MediaType Transparency *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *MediaType LabelPaper
+*UIConstraints: *MediaType LabelPaper *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1 *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize FXEnvDLRotated *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper1Back *PageSize FXEnvDLRotated
+*UIConstraints: *PageSize EnvC5 *MediaType Default
+*UIConstraints: *MediaType Default *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *MediaType Stationary
+*UIConstraints: *MediaType Stationary *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *MediaType StationaryBack
+*UIConstraints: *MediaType StationaryBack *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *MediaType FinePaper
+*UIConstraints: *MediaType FinePaper *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *MediaType FinePaperBack
+*UIConstraints: *MediaType FinePaperBack *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *MediaType Postcard
+*UIConstraints: *MediaType Postcard *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *MediaType PostcardBack
+*UIConstraints: *MediaType PostcardBack *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *MediaType Transparency
+*UIConstraints: *MediaType Transparency *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *MediaType LabelPaper
+*UIConstraints: *MediaType LabelPaper *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1 *PageSize EnvC5
+*UIConstraints: *PageSize EnvC5 *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper1Back *PageSize EnvC5
+*UIConstraints: *PageSize FXEnvYou2Rotated *MediaType Default
+*UIConstraints: *MediaType Default *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *MediaType Stationary
+*UIConstraints: *MediaType Stationary *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *MediaType StationaryBack
+*UIConstraints: *MediaType StationaryBack *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *MediaType FinePaper
+*UIConstraints: *MediaType FinePaper *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *MediaType FinePaperBack
+*UIConstraints: *MediaType FinePaperBack *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *MediaType Postcard
+*UIConstraints: *MediaType Postcard *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *MediaType PostcardBack
+*UIConstraints: *MediaType PostcardBack *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *MediaType Transparency
+*UIConstraints: *MediaType Transparency *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *MediaType LabelPaper
+*UIConstraints: *MediaType LabelPaper *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1 *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou2Rotated *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper1Back *PageSize FXEnvYou2Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *MediaType Default
+*UIConstraints: *MediaType Default *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *MediaType Stationary
+*UIConstraints: *MediaType Stationary *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *MediaType StationaryBack
+*UIConstraints: *MediaType StationaryBack *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *MediaType FinePaper
+*UIConstraints: *MediaType FinePaper *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *MediaType FinePaperBack
+*UIConstraints: *MediaType FinePaperBack *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *MediaType Postcard
+*UIConstraints: *MediaType Postcard *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *MediaType PostcardBack
+*UIConstraints: *MediaType PostcardBack *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *MediaType Transparency
+*UIConstraints: *MediaType Transparency *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *MediaType LabelPaper
+*UIConstraints: *MediaType LabelPaper *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1 *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize FXEnvYou3Rotated *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper1Back *PageSize FXEnvYou3Rotated
+*UIConstraints: *PageSize EnvChou3 *MediaType Default
+*UIConstraints: *MediaType Default *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *MediaType Stationary
+*UIConstraints: *MediaType Stationary *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *MediaType StationaryBack
+*UIConstraints: *MediaType StationaryBack *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *MediaType FinePaper
+*UIConstraints: *MediaType FinePaper *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *MediaType FinePaperBack
+*UIConstraints: *MediaType FinePaperBack *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *MediaType Postcard
+*UIConstraints: *MediaType Postcard *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *MediaType PostcardBack
+*UIConstraints: *MediaType PostcardBack *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *MediaType Transparency
+*UIConstraints: *MediaType Transparency *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *MediaType LabelPaper
+*UIConstraints: *MediaType LabelPaper *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1 *PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3 *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper1Back *PageSize EnvChou3
+*UIConstraints: *PageSize FXPostcard *MediaType Default
+*UIConstraints: *MediaType Default *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *MediaType Stationary
+*UIConstraints: *MediaType Stationary *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *MediaType StationaryBack
+*UIConstraints: *MediaType StationaryBack *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *MediaType FinePaper
+*UIConstraints: *MediaType FinePaper *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *MediaType FinePaperBack
+*UIConstraints: *MediaType FinePaperBack *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *MediaType Envelope
+*UIConstraints: *MediaType Envelope *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *MediaType Transparency
+*UIConstraints: *MediaType Transparency *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *MediaType LabelPaper
+*UIConstraints: *MediaType LabelPaper *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *MediaType CoatingPaper1
+*UIConstraints: *MediaType CoatingPaper1 *PageSize FXPostcard
+*UIConstraints: *PageSize FXPostcard *MediaType CoatingPaper1Back
+*UIConstraints: *MediaType CoatingPaper1Back *PageSize FXPostcard
+*UIConstraints: *FXPreferredMediaType Stationary *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *FXPreferredMediaType Stationary
+*UIConstraints: *FXPreferredMediaType Stationary *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *FXPreferredMediaType Stationary
+*UIConstraints: *FXPreferredMediaType Stationary *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *FXPreferredMediaType Stationary
+*UIConstraints: *FXPreferredMediaType Stationary *FXInputSlot BypassTray
+*UIConstraints: *FXInputSlot BypassTray *FXPreferredMediaType Stationary
+*UIConstraints: *FXPreferredMediaType FinePaper *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *FXPreferredMediaType FinePaper
+*UIConstraints: *FXPreferredMediaType FinePaper *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *FXPreferredMediaType FinePaper
+*UIConstraints: *FXPreferredMediaType FinePaper *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *FXPreferredMediaType FinePaper
+*UIConstraints: *FXPreferredMediaType FinePaper *FXInputSlot BypassTray
+*UIConstraints: *FXInputSlot BypassTray *FXPreferredMediaType FinePaper
+*UIConstraints: *FXPreferredMediaType CoatingPaper1 *FXInputSlot 1stTray-S
+*UIConstraints: *FXInputSlot 1stTray-S *FXPreferredMediaType CoatingPaper1
+*UIConstraints: *FXPreferredMediaType CoatingPaper1 *FXInputSlot 1stTray-H
+*UIConstraints: *FXInputSlot 1stTray-H *FXPreferredMediaType CoatingPaper1
+*UIConstraints: *FXPreferredMediaType CoatingPaper1 *FXInputSlot 2ndTray-H
+*UIConstraints: *FXInputSlot 2ndTray-H *FXPreferredMediaType CoatingPaper1
+*UIConstraints: *FXPreferredMediaType CoatingPaper1 *FXInputSlot BypassTray
+*UIConstraints: *FXInputSlot BypassTray *FXPreferredMediaType CoatingPaper1
+
+*OpenGroup: General/General
+*OpenUI *PageSize/Paper Size: PickOne
+*OrderDependency: 20 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize Letter/US Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageSize Legal/US Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageSize Executive/Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageSize FanFoldGermanLegal/Folio (8.5 x 13 in): "<</PageSize[612 936]/ImagingBBox null>>setpagedevice"
+*PageSize A4/A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageSize A5/A5: "<</PageSize[421 595]/ImagingBBox null>>setpagedevice"
+*PageSize B5/B5 (JIS): "<</PageSize[516 729]/ImagingBBox null>>setpagedevice"
+*PageSize Env10/Envelope #10: "<</PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageSize EnvMonarch/Envelope Monarch: "<</PageSize[279 540]/ImagingBBox null>>setpagedevice"
+*PageSize FXEnvMonarchRotated/Envelope Monarch, Long Edge First: "<</PageSize[540 279]/ImagingBBox null>>setpagedevice"
+*PageSize EnvDL/Envelope DL: "<</PageSize[312 624]/ImagingBBox null>>setpagedevice"
+*PageSize FXEnvDLRotated/Envelope DL, Long Edge First: "<</PageSize[624 312]/ImagingBBox null>>setpagedevice"
+*PageSize EnvC5/Envelope C5: "<</PageSize[459 649]/ImagingBBox null>>setpagedevice"
+*PageSize FXEnvYou2Rotated/Envelope C6, Long Edge First: "<</PageSize[459 323]/ImagingBBox null>>setpagedevice"
+*PageSize FXEnvYou3Rotated/Envelope Youkei 3, Long Edge First: "<</PageSize[420 278]/ImagingBBox null>>setpagedevice"
+*PageSize EnvChou3/Envelope Choukei 3: "<</PageSize[340 666]/ImagingBBox null>>setpagedevice"
+*PageSize FXPostcard/Postcard (Japan): "<</PageSize[283 420]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion/Page Region: PickOne
+*OrderDependency: 20 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion Letter/US Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageRegion Legal/US Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageRegion Executive/Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageRegion FanFoldGermanLegal/Folio (8.5 x 13 in): "<</PageSize[612 936]/ImagingBBox null>>setpagedevice"
+*PageRegion A4/A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageRegion A5/A5: "<</PageSize[421 595]/ImagingBBox null>>setpagedevice"
+*PageRegion B5/B5 (JIS): "<</PageSize[516 729]/ImagingBBox null>>setpagedevice"
+*PageRegion Env10/Envelope #10: "<</PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvMonarch/Envelope Monarch: "<</PageSize[279 540]/ImagingBBox null>>setpagedevice"
+*PageRegion FXEnvMonarchRotated/Envelope Monarch, Long Edge First: "<</PageSize[540 279]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvDL/Envelope DL: "<</PageSize[312 624]/ImagingBBox null>>setpagedevice"
+*PageRegion FXEnvDLRotated/Envelope DL, Long Edge First: "<</PageSize[624 312]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvC5/Envelope C5: "<</PageSize[459 649]/ImagingBBox null>>setpagedevice"
+*PageRegion FXEnvYou2Rotated/Envelope C6, Long Edge First: "<</PageSize[459 323]/ImagingBBox null>>setpagedevice"
+*PageRegion FXEnvYou3Rotated/Envelope Youkei 3, Long Edge First: "<</PageSize[420 278]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvChou3/Envelope Choukei 3: "<</PageSize[340 666]/ImagingBBox null>>setpagedevice"
+*PageRegion FXPostcard/Postcard (Japan): "<</PageSize[283 420]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+
+*OpenUI *FXInputSlot/Paper Source: PickOne
+*OrderDependency: 20 AnySetup *FXInputSlot
+*DefaultFXInputSlot: 1stTray-S
+*FXInputSlot AutoSelect/Automatic: ""
+*FXInputSlot 1stTray-S/Tray 1 (250 Sheets): ""
+*FXInputSlot 1stTray-H/Tray 1 (500 Sheets): ""
+*FXInputSlot 2ndTray-H/Tray 2 (500 Sheets): ""
+*FXInputSlot BypassTray/Bypass Tray: ""
+*CloseUI: *FXInputSlot
+
+*OpenUI *MediaType/Bypass Tray Paper Type: PickOne
+*OrderDependency: 20 AnySetup *MediaType
+*DefaultMediaType: Default
+*MediaType Default/Printer Default: ""
+*MediaType Stationary/Plain: ""
+*MediaType StationaryBack/Plain, Second Side: ""
+*MediaType FinePaper/Bond: ""
+*MediaType FinePaperBack/Bond, Second Side: ""
+*MediaType Postcard/Postcard: ""
+*MediaType PostcardBack/Postcard, Second Side: ""
+*MediaType Envelope/Envelope: ""
+*MediaType ThickPaper/Heavyweight 1 (106-163 g/m2): ""
+*MediaType ThickPaperBack/Heavyweight 1, Second Side: ""
+*MediaType ThickPaper2/Heavyweight 2 (164-216 g/m2): ""
+*MediaType ThickPaper2Back/Heavyweight 2, Second Side: ""
+*MediaType Transparency/Transparency: ""
+*MediaType LabelPaper/Labels: ""
+*MediaType CoatingPaper1/Coated 1 (60-105 g/m2): ""
+*MediaType CoatingPaper1Back/Coated 1, Second Side: ""
+*MediaType CoatingPaper2/Coated 2 (106-163 g/m2): ""
+*MediaType CoatingPaper2Back/Coated 2, Second Side: ""
+*MediaType CoatingPaper3/Coated 3 (164-216 g/m2): ""
+*MediaType CoatingPaper3Back/Coated 3, Second Side: ""
+*CloseUI: *MediaType
+
+*OpenUI *Duplex/Two-Sided: PickOne
+*OrderDependency: 20 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex None/Off: ""
+*Duplex DuplexNoTumble/Long-Edge Binding: ""
+*Duplex DuplexTumble/Short-Edge Binding: ""
+*CloseUI: *Duplex
+
+*OpenUI *FXColorMode/Color Mode: PickOne
+*OrderDependency: 10 AnySetup *FXColorMode
+*DefaultFXColorMode: Color
+*FXColorMode Color/Color: "<</cupsColorSpace 1/cupsColorOrder 0/cupsBitsPerColor 8>>setpagedevice"
+*FXColorMode Black/Black and White: "<</cupsColorSpace 1/cupsColorOrder 0/cupsBitsPerColor 8>>setpagedevice"
+*CloseUI: *FXColorMode
+
+*OpenUI *FXOutputMode/Resolution: PickOne
+*OrderDependency: 10 AnySetup *FXOutputMode
+*DefaultFXOutputMode: 600x600
+*FXOutputMode 600x600/600 dpi: "<</HWResolution[600 600]>>setpagedevice"
+*FXOutputMode 300x300/300 dpi (Faster): "<</HWResolution[300 300]>>setpagedevice"
+*CloseUI: *FXOutputMode
+
+*OpenUI *Collate/Collate Copies: PickOne
+*OrderDependency: 20 AnySetup *Collate
+*DefaultCollate: False
+*Collate False/Off: ""
+*Collate True/On: ""
+*CloseUI: *Collate
+
+*CloseGroup: General
+
+*DefaultImageableArea: A4
+*ImageableArea Letter/US Letter: "11.28 11.28 600.72 780.72"
+*ImageableArea Legal/US Legal: "11.28 11.28 600.72 996.72"
+*ImageableArea Executive/Executive: "11.28 11.28 510.72 744.72"
+*ImageableArea FanFoldGermanLegal/Folio (8.5 x 13 in): "11.28 11.28 600.72 924.72"
+*ImageableArea A4/A4: "11.28 11.28 583.72 830.72"
+*ImageableArea A5/A5: "11.28 11.28 409.72 583.72"
+*ImageableArea B5/B5 (JIS): "11.28 11.28 504.72 717.72"
+*ImageableArea Env10/Envelope #10: "11.28 11.28 285.72 672.72"
+*ImageableArea EnvMonarch/Envelope Monarch: "11.28 11.28 267.72 528.72"
+*ImageableArea FXEnvMonarchRotated/Envelope Monarch, Long Edge First: "11.28 11.28 528.72 267.72"
+*ImageableArea EnvDL/Envelope DL: "11.28 11.28 300.72 612.72"
+*ImageableArea FXEnvDLRotated/Envelope DL, Long Edge First: "11.28 11.28 612.72 300.72"
+*ImageableArea EnvC5/Envelope C5: "11.28 11.28 447.72 637.72"
+*ImageableArea FXEnvYou2Rotated/Envelope C6, Long Edge First: "11.28 11.28 447.72 311.72"
+*ImageableArea FXEnvYou3Rotated/Envelope Youkei 3, Long Edge First: "11.28 11.28 408.72 266.72"
+*ImageableArea EnvChou3/Envelope Choukei 3: "11.28 11.28 328.72 654.72"
+*ImageableArea FXPostcard/Postcard (Japan): "11.28 11.28 271.72 408.72"
+
+*DefaultPaperDimension: A4
+*PaperDimension Letter/US Letter: "612 792"
+*PaperDimension Legal/US Legal: "612 1008"
+*PaperDimension Executive/Executive: "522 756"
+*PaperDimension FanFoldGermanLegal/Folio (8.5 x 13 in): "612 936"
+*PaperDimension A4/A4: "595 842"
+*PaperDimension A5/A5: "421 595"
+*PaperDimension B5/B5 (JIS): "516 729"
+*PaperDimension Env10/Envelope #10: "297 684"
+*PaperDimension EnvMonarch/Envelope Monarch: "279 540"
+*PaperDimension FXEnvMonarchRotated/Envelope Monarch, Long Edge First: "540 279"
+*PaperDimension EnvDL/Envelope DL: "312 624"
+*PaperDimension FXEnvDLRotated/Envelope DL, Long Edge First: "624 312"
+*PaperDimension EnvC5/Envelope C5: "459 649"
+*PaperDimension FXEnvYou2Rotated/Envelope C6, Long Edge First: "459 323"
+*PaperDimension FXEnvYou3Rotated/Envelope Youkei 3, Long Edge First: "420 278"
+*PaperDimension EnvChou3/Envelope Choukei 3: "340 666"
+*PaperDimension FXPostcard/Postcard (Japan): "283 420"
+
+*VariablePaperSize: True
+*MaxMediaWidth: "612"
+*MaxMediaHeight: "1008"
+*HWMargins: 11 11 11 11
+*CustomPageSize True: "pop pop pop <</PageSize [5 -2 roll] /ImagingBBox null>> setpagedevice"
+*ParamCustomPageSize Width: 1 points 255 612
+*ParamCustomPageSize Height: 2 points 396 1008
+*ParamCustomPageSize WidthOffset: 3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*ParamCustomPageSize Orientation: 5 int 0 1
+
+*APPrinterPreset Color_Draft/Color, Draft: "*FXColorMode Color *FXOutputMode 300x300 com.apple.print.preset.output-mode color com.apple.print.preset.quality low"
+*APPrinterPreset Color_Normal/Color: "*FXColorMode Color *FXOutputMode 600x600 com.apple.print.preset.output-mode color com.apple.print.preset.quality mid"
+*APPrinterPreset Color_Best/Color, Best: "*FXColorMode Color *FXOutputMode 600x600 com.apple.print.preset.output-mode color com.apple.print.preset.quality high"
+*APPrinterPreset Gray_Draft/Black and White, Draft: "*FXColorMode Black *FXOutputMode 300x300 com.apple.print.preset.output-mode monochrome com.apple.print.preset.quality low"
+*APPrinterPreset Gray_Normal/Black and White: "*FXColorMode Black *FXOutputMode 600x600 com.apple.print.preset.output-mode monochrome com.apple.print.preset.quality mid"
+*APPrinterPreset Gray_Best/Black and White, Best: "*FXColorMode Black *FXOutputMode 600x600 com.apple.print.preset.output-mode monochrome com.apple.print.preset.quality high"
+
+*OpenGroup: Advanced/Advanced
+*OpenUI *FXDocumentType/Color Correction: PickOne
+*OrderDependency: 20 AnySetup *FXDocumentType
+*DefaultFXDocumentType: Normal
+*FXDocumentType Normal/Standard: ""
+*FXDocumentType Photo/Photos: ""
+*FXDocumentType Presentation/Presentations: ""
+*FXDocumentType Web/Web Pages: ""
+*FXDocumentType POP/Posters and Signs: ""
+*FXDocumentType Off/Off: ""
+*CloseUI: *FXDocumentType
+
+*OpenUI *FXPreferredMediaType/Paper Type for Automatic Tray: PickOne
+*OrderDependency: 20 AnySetup *FXPreferredMediaType
+*DefaultFXPreferredMediaType: Default
+*FXPreferredMediaType Default/Any: ""
+*FXPreferredMediaType Stationary/Plain: ""
+*FXPreferredMediaType FinePaper/Bond: ""
+*FXPreferredMediaType CoatingPaper1/Coated 1 (60-105 g/m2): ""
+*CloseUI: *FXPreferredMediaType
+
+*OpenUI *FXSubPaperSelection/Substitute Tray: PickOne
+*OrderDependency: 20 AnySetup *FXSubPaperSelection
+*DefaultFXSubPaperSelection: Policy0
+*FXSubPaperSelection Policy0/Printer Default: ""
+*FXSubPaperSelection Policy2/Off, Show a Message: ""
+*FXSubPaperSelection SMH/Bypass Tray: ""
+*CloseUI: *FXSubPaperSelection
+
+*OpenUI *FXSkip/Skip Blank Pages: PickOne
+*OrderDependency: 20 AnySetup *FXSkip
+*DefaultFXSkip: False
+*FXSkip False/Off: ""
+*FXSkip True/On: ""
+*CloseUI: *FXSkip
+
+*OpenUI *FXTurnPage/Rotate 180 Degrees: PickOne
+*OrderDependency: 20 AnySetup *FXTurnPage
+*DefaultFXTurnPage: False
+*FXTurnPage False/Off: ""
+*FXTurnPage True/On: ""
+*CloseUI: *FXTurnPage
+
+*OpenUI *FXTonerSaver/Toner Saver: PickOne
+*OrderDependency: 20 AnySetup *FXTonerSaver
+*DefaultFXTonerSaver: False
+*FXTonerSaver False/Off: ""
+*FXTonerSaver True/On: ""
+*CloseUI: *FXTonerSaver
+
+*CloseGroup: Advanced

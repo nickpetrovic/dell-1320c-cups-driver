@@ -1,0 +1,86 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  macos:
+    name: macOS
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install xz
+        run: command -v xz >/dev/null || brew install xz
+      - name: Build and test
+        run: make WERROR=1 check
+      - name: Build with sanitizers and test
+        run: make BUILD=build/sanitize SANITIZE=1 ARCHS=arm64 check
+      - name: Build the installer
+        run: make WERROR=1 pkg
+
+  linux:
+    name: Linux (${{ matrix.image }})
+    runs-on: ubuntu-26.04
+    strategy:
+      matrix:
+        image: ["debian:trixie", "almalinux:9", "fedora:latest"]
+    container: ${{ matrix.image }}
+    steps:
+      - name: Install build tools
+        run: |
+          . /etc/os-release
+          case $ID in
+            debian) apt-get update && apt-get install -y g++ make libcups2-dev zlib1g-dev xz-utils ;;
+            almalinux) dnf install -y gcc-toolset-14-gcc-c++ make cups-devel zlib-devel xz diffutils ;;
+            fedora) dnf install -y gcc-c++ make cups-devel zlib-devel xz diffutils ;;
+          esac
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Build and test
+        run: |
+          if [ -f /opt/rh/gcc-toolset-14/enable ]; then . /opt/rh/gcc-toolset-14/enable; fi
+          make WERROR=1 check
+
+  packages:
+    name: Linux packages (${{ matrix.architecture }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-26.04
+          - architecture: arm64
+            runner: ubuntu-26.04-arm
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Build the packages
+        run: make linux-packages ARCHITECTURES=${{ matrix.architecture }}
+      - name: Install the packages and print through CUPS
+        run: make package-test
+
+  style:
+    name: Format, clang-tidy and lint
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+      - name: Install tools
+        run: sudo apt-get update && sudo apt-get install -y g++ make libcups2-dev zlib1g-dev cups shellcheck
+      - name: Check formatting
+        run: make format-check
+      - name: Run clang-tidy
+        run: make tidy
+      - name: Run shellcheck and cupstestppd
+        run: make lint

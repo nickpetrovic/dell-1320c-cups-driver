@@ -1,0 +1,9 @@
+dell1320c includes material derived from the Fuji Xerox driver for the DocuPrint C525 A. That material is not covered by the MIT License in LICENSE.
+
+- The color tables in data/color/ were recorded from the output of the Fuji Xerox driver's color correction step.
+
+- The expected output in test/golden/expected/ was recorded from the Fuji Xerox driver. It is used only by the tests and is not installed.
+
+No license from Fuji Xerox is known to cover this material.
+
+The SQ21 compression in this driver is based on the reverse engineering done by the biosed/dell-1320c-cups-driver project (https://github.com/biosed/dell-1320c-cups-driver).

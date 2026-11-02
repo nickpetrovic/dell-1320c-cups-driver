@@ -1,0 +1,31 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 140
+AccessModifierOffset: -4
+AllowShortBlocksOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLoopsOnASingleLine: true
+BreakBeforeBraces: Attach
+IndentCaseLabels: false
+NamespaceIndentation: None
+PointerAlignment: Left
+QualifierAlignment: Left
+SortIncludes: Never
+SpaceBeforeCpp11BracedList: false
+Standard: Latest
+BreakStringLiterals: false
+AlignEscapedNewlines: Left
+AlignConsecutiveDeclarations:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+  AlignFunctionDeclarations: false
+  AlignFunctionPointers: false
+AlignConsecutiveMacros: Consecutive
+AlignArrayOfStructures: Left
+MaxEmptyLinesToKeep: 1
+AlignAfterOpenBracket: BlockIndent
+FixNamespaceComments: false
+PenaltyReturnTypeOnItsOwnLine: 1000

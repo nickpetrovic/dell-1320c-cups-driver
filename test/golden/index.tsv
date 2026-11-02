@@ -1,0 +1,76 @@
+letter	620ca1a7c2c8ea5f	1	PageSize=Letter
+photo-mode	620ca1a7c2c8ea5f	1	PageSize=Letter FXDocumentType=Photo
+presentation-mode	620ca1a7c2c8ea5f	1	PageSize=Letter FXDocumentType=Presentation
+web-mode	620ca1a7c2c8ea5f	1	PageSize=Letter FXDocumentType=Web
+pop-mode	620ca1a7c2c8ea5f	1	PageSize=Letter FXDocumentType=POP
+color-correction-off	620ca1a7c2c8ea5f	1	PageSize=Letter FXDocumentType=Off
+black	620ca1a7c2c8ea5f	1	PageSize=Letter FXColorMode=Black
+black-correction-off	620ca1a7c2c8ea5f	1	PageSize=Letter FXColorMode=Black FXDocumentType=Off
+tray-auto	620ca1a7c2c8ea5f	1	PageSize=Letter FXInputSlot=AutoSelect
+tray-manual	620ca1a7c2c8ea5f	1	PageSize=Letter FXInputSlot=BypassTray
+tray-2	620ca1a7c2c8ea5f	1	PageSize=Letter Option1=1+2Tray-SH FXInputSlot=2ndTray-H
+a4	40125e4a4feb4552	1	PageSize=A4
+legal	d1192e2415480bbe	1	PageSize=Legal
+a5	15d91e6279920c53	1	PageSize=A5
+executive	f10ccfbdefa9ca57	1	PageSize=Executive
+b5	f9e2999cdf7bf7af	1	PageSize=B5
+folio	669000457e35c6ad	1	PageSize=FanFoldGermanLegal FXInputSlot=BypassTray
+postcard	38a35073cebd2c80	1	PageSize=FXPostcard FXInputSlot=BypassTray MediaType=Postcard
+envelope-com10	c2ba341addb82f4d	1	PageSize=Env10 FXInputSlot=BypassTray MediaType=Envelope
+envelope-monarch	0bf03ade4b292270	1	PageSize=EnvMonarch FXInputSlot=BypassTray MediaType=Envelope
+envelope-monarch-rotated	bc21663feec84be4	1	PageSize=FXEnvMonarchRotated FXInputSlot=BypassTray MediaType=Envelope
+envelope-dl	a1a700a6a2dc217e	1	PageSize=EnvDL FXInputSlot=BypassTray MediaType=Envelope
+envelope-dl-rotated	4cbf7be103f09469	1	PageSize=FXEnvDLRotated FXInputSlot=BypassTray MediaType=Envelope
+envelope-c5	9f26d88f347b4641	1	PageSize=EnvC5 FXInputSlot=BypassTray MediaType=Envelope
+envelope-c6-rotated	c65e7ec933c36861	1	PageSize=FXEnvYou2Rotated FXInputSlot=BypassTray MediaType=Envelope
+envelope-youkei3-rotated	1e7bd2e9e1df4d31	1	PageSize=FXEnvYou3Rotated FXInputSlot=BypassTray MediaType=Envelope
+envelope-choukei3	242d68343cca9d38	1	PageSize=EnvChou3 FXInputSlot=BypassTray MediaType=Envelope
+custom-400x600	09f6230a0e4d51d4	1	PageSize=Custom.400x600 FXInputSlot=BypassTray
+custom-401x601	80d3e6e61ac7d680	1	PageSize=Custom.401x601 FXInputSlot=BypassTray
+custom-401x601-300dpi	4e659febe92a047c	1	PageSize=Custom.401x601 FXInputSlot=BypassTray FXOutputMode=300x300
+custom-fractional	2b1212b0b9f7fab5	1	PageSize=Custom.333.3x500.7 FXInputSlot=BypassTray
+custom-largest	7dce6b09141bd16c	1	PageSize=Custom.612x1008 FXInputSlot=BypassTray
+custom-smallest-black	8d84a3631cb6574b	1	PageSize=Custom.255x396 FXInputSlot=BypassTray FXColorMode=Black
+duplex-long-edge	620ca1a7c2c8ea5f	1	PageSize=Letter Duplex=DuplexNoTumble
+duplex-short-edge	620ca1a7c2c8ea5f	1	PageSize=Letter Duplex=DuplexTumble
+media-thick	620ca1a7c2c8ea5f	1	PageSize=Letter MediaType=ThickPaper FXInputSlot=BypassTray
+media-thick-black	620ca1a7c2c8ea5f	1	PageSize=Letter FXColorMode=Black MediaType=ThickPaper FXInputSlot=BypassTray
+media-labels	620ca1a7c2c8ea5f	1	PageSize=Letter MediaType=LabelPaper FXInputSlot=BypassTray
+media-transparency	620ca1a7c2c8ea5f	1	PageSize=Letter MediaType=Transparency FXInputSlot=BypassTray
+media-coated2-back	620ca1a7c2c8ea5f	1	PageSize=Letter MediaType=CoatingPaper2Back FXInputSlot=BypassTray
+preferred-fine-substitute-smh	620ca1a7c2c8ea5f	1	PageSize=Letter FXPreferredMediaType=FinePaper FXSubPaperSelection=SMH
+substitute-off	620ca1a7c2c8ea5f	1	PageSize=Letter FXSubPaperSelection=Policy2
+toner-saver	620ca1a7c2c8ea5f	1	PageSize=Letter FXTonerSaver=True
+a4-300dpi	3a54c85bc4d596cb	1	PageSize=A4 FXOutputMode=300x300
+letter-300dpi	3f4f8e8cbe0f1d3b	1	PageSize=Letter FXOutputMode=300x300
+letter-300dpi-black	3f4f8e8cbe0f1d3b	1	PageSize=Letter FXOutputMode=300x300 FXColorMode=Black
+copies-3	77eb06a3bd72f169	3	PageSize=Letter
+copies-3-collated	77eb06a3bd72f169	3	PageSize=Letter Collate=True
+multi	0fcb1fca8d66733d	1	PageSize=Letter
+multi-black	0fcb1fca8d66733d	1	PageSize=Letter FXColorMode=Black
+multi-duplex-long-edge	0fcb1fca8d66733d	1	PageSize=Letter Duplex=DuplexNoTumble
+multi-duplex-short-edge	0fcb1fca8d66733d	1	PageSize=Letter Duplex=DuplexTumble
+multi-rotated	0fcb1fca8d66733d	1	PageSize=Letter FXTurnPage=True
+multi-rotated-duplex-long-edge	0fcb1fca8d66733d	1	PageSize=Letter FXTurnPage=True Duplex=DuplexNoTumble
+multi-rotated-duplex-short-edge	0fcb1fca8d66733d	1	PageSize=Letter FXTurnPage=True Duplex=DuplexTumble
+multi-black-duplex-long-edge	0fcb1fca8d66733d	1	PageSize=Letter FXColorMode=Black Duplex=DuplexNoTumble
+multi-copies-2	5c4bce2d62040017	2	PageSize=Letter
+multi-copies-2-collated	5c4bce2d62040017	2	PageSize=Letter Collate=True
+multi-copies-2-collated-duplex	5c4bce2d62040017	2	PageSize=Letter Collate=True Duplex=DuplexNoTumble
+multi-copies-3-collated-duplex-short	944f4435a6738797	3	PageSize=Letter Collate=True Duplex=DuplexTumble
+blank-pages	423c00a8218ae11a	1	PageSize=Letter
+skip-blank-pages	423c00a8218ae11a	1	PageSize=Letter FXSkip=True
+skip-blank-pages-black	423c00a8218ae11a	1	PageSize=Letter FXSkip=True FXColorMode=Black
+photo-small	3e17892b7aae8e78	1	PageSize=Custom.180x180 FXInputSlot=BypassTray
+photo-small-photo-mode	3e17892b7aae8e78	1	PageSize=Custom.180x180 FXInputSlot=BypassTray FXDocumentType=Photo
+photo-small-black	3e17892b7aae8e78	1	PageSize=Custom.180x180 FXInputSlot=BypassTray FXColorMode=Black
+photo-landscape	43776d8f5986773c	1	PageSize=Custom.300x200 FXInputSlot=BypassTray
+photo-300dpi	c1efbff9af71ba05	1	PageSize=Custom.200x300 FXInputSlot=BypassTray FXOutputMode=300x300
+photo-300dpi-black	c1efbff9af71ba05	1	PageSize=Custom.200x300 FXInputSlot=BypassTray FXOutputMode=300x300 FXColorMode=Black
+photo-correction-off	3e17892b7aae8e78	1	PageSize=Custom.180x180 FXInputSlot=BypassTray FXDocumentType=Off
+photo-black-correction-off	3e17892b7aae8e78	1	PageSize=Custom.180x180 FXInputSlot=BypassTray FXColorMode=Black FXDocumentType=Off
+photo-presentation-rotated	3e17892b7aae8e78	1	PageSize=Custom.180x180 FXInputSlot=BypassTray FXDocumentType=Presentation FXTurnPage=True
+noise	2f2fa1ad81cda28f	1	PageSize=Custom.144x144 FXInputSlot=BypassTray
+noise-black	2f2fa1ad81cda28f	1	PageSize=Custom.144x144 FXInputSlot=BypassTray FXColorMode=Black
+noise-300dpi	e2d71e0389d90e7e	1	PageSize=Custom.144x144 FXInputSlot=BypassTray FXOutputMode=300x300
+noise-web	2f2fa1ad81cda28f	1	PageSize=Custom.144x144 FXInputSlot=BypassTray FXDocumentType=Web

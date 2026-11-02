@@ -1,0 +1,138 @@
+.Dd November 2, 2026
+.Dt DELL1320C 1
+.Os
+.Sh NAME
+.Nm dell1320c
+.Nd set up and manage print queues for the Dell Color Laser 1320c
+.Sh SYNOPSIS
+.Nm
+.Cm add
+.Ar address | uri
+.Op Fl \-name Ar name
+.Op Fl \-description Ar text
+.Op Fl \-location Ar text
+.Op Fl \-paper Ar size
+.Op Fl \-protocol Cm lpd | socket
+.Op Fl \-default
+.Op Fl \-shared
+.Nm
+.Cm remove
+.Op Ar name
+.Nm
+.Cm trays
+.Ar address
+.Nm
+.Cm list
+.Nm
+.Cm refresh
+.Nm
+.Cm uninstall
+.Nm
+.Cm version
+.Sh DESCRIPTION
+.Nm
+creates and manages CUPS print queues that use the
+Dell Color Laser 1320c driver.
+Commands that change printer settings must be run as root, for example with
+.Xr sudo 8 .
+.Bl -tag -width uninstall
+.It Cm add
+Creates a print queue for the printer at
+.Ar address ,
+or updates the queue if it already exists.
+An address is a host name, an IPv4 address, or an IPv6 address.
+A device URI such as
+.Li socket://192.168.0.80:9100
+or a
+.Li usb://
+URI from
+.Nm lpinfo Fl v
+is used as given.
+Before creating the queue,
+.Nm
+asks the printer which paper trays it has, over SNMP with
+.Xr snmpwalk 1
+or through the printer's web page with
+.Xr curl 1 .
+If the printer reports Tray 2, the queue is set up with both trays.
+Jobs print from Tray 1 unless another tray is chosen.
+.It Cm remove
+Deletes a print queue that uses this driver.
+Without a name it deletes
+.Li Dell_Color_Laser_1320c .
+Queues that use other drivers are never deleted.
+.It Cm trays
+Shows the paper trays the printer at
+.Ar address
+reports.
+.It Cm list
+Lists the print queues that use this driver, with their device URIs.
+.It Cm refresh
+Gives every print queue that uses this driver the installed PPD,
+keeping the options chosen for each queue.
+The installer packages run it after every install and upgrade.
+.It Cm uninstall
+Removes every print queue that uses this driver, then the driver itself.
+Only available on macOS; on Linux, remove the driver with the package manager.
+.It Cm version
+Shows the driver version.
+.El
+.Pp
+The options for
+.Cm add
+are:
+.Bl -tag -width "--description text"
+.It Fl \-name Ar name
+Queue name.
+The default is
+.Li Dell_Color_Laser_1320c .
+The name must not start with a hyphen or contain spaces,
+.Sq / ,
+.Sq # ,
+.Sq \e ,
+single quotes or double quotes.
+.It Fl \-description Ar text
+Name shown in print dialogs.
+The default is
+.Li Dell Color Laser 1320c .
+.It Fl \-location Ar text
+Location shown in print dialogs.
+.It Fl \-paper Ar size
+Default paper size, such as
+.Li Letter
+or
+.Li A4 .
+The default comes from the region set for the user running the command.
+.It Fl \-protocol Cm lpd | socket
+Protocol used when an address is given:
+.Cm lpd ,
+the default, or
+.Cm socket ,
+which prints to port 9100.
+.It Fl \-default
+Makes the queue the default printer.
+.It Fl \-shared
+Shares the queue on the network.
+Queues are not shared by default.
+.El
+.Sh FILES
+.Bl -tag -width "@PPD@"
+.It Pa @PPD@
+The driver's PPD.
+.It Pa @DRIVER_DIR@
+The driver's files, including the color correction tables.
+.El
+.Sh EXIT STATUS
+.Ex -std
+.Sh EXAMPLES
+Create the default queue for a network printer and make it the default
+printer:
+.Dl sudo dell1320c add 192.168.0.80 \-\-default
+.Pp
+Create a queue for a USB printer with A4 paper:
+.Dl sudo dell1320c add 'usb://Dell/Color%20Laser%201320c?serial=XXXXXXXX' \-\-paper A4
+.Sh SEE ALSO
+.Xr lpoptions 1 ,
+.Xr lpstat 1 ,
+.Xr lpadmin 8 ,
+.Xr lpinfo 8

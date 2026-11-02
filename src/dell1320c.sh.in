@@ -1,0 +1,395 @@
+#!/bin/sh
+set -eu
+
+VERSION='@VERSION@'
+PLATFORM='@PLATFORM@'
+PPD='@PPD@'
+DRIVER_DIR='@DRIVER_DIR@'
+BIN_DIR='@BIN_DIR@'
+MAN_DIR='@MAN_DIR@'
+PACKAGE_ID='@PACKAGE_ID@'
+MODEL='Dell Color Laser 1320c'
+DEFAULT_NAME='Dell_Color_Laser_1320c'
+TRAY_NAMES_OID='1.3.6.1.2.1.43.8.2.1.13'
+MAX_NAME_LENGTH=127
+
+program=$(basename "$0")
+
+usage() {
+    cat <<EOF
+Usage: $program <command> [arguments]
+
+Commands:
+  add <address|uri> [options]  Create or update a print queue for a $MODEL
+  remove [name]                Delete a print queue that uses this driver (default: $DEFAULT_NAME)
+  trays <address>              Show the paper trays the printer reports
+  list                         List print queues that use this driver
+  refresh                      Update existing print queues to the installed driver version
+  uninstall                    Remove the driver and its print queues (macOS)
+  version                      Show the driver version
+
+Options for add:
+  --name <name>         Queue name (default: $DEFAULT_NAME)
+  --description <text>  Description shown in print dialogs (default: $MODEL)
+  --location <text>     Location shown in print dialogs
+  --paper <size>        Default paper size, such as Letter or A4 (default: from the system locale)
+  --protocol lpd|socket Network protocol when an address is given (default: lpd)
+  --default             Make this the default printer
+  --shared              Share the printer on the network (default: not shared)
+
+Examples:
+  sudo $program add 192.168.0.80 --default
+  sudo $program add usb://Dell/Color%20Laser%201320c --paper A4
+EOF
+}
+
+die() {
+    printf '%s: %s\n' "$program" "$*" >&2
+    exit 1
+}
+
+warn() {
+    printf '%s: %s\n' "$program" "$*" >&2
+}
+
+note() {
+    printf '%s\n' "$*"
+}
+
+require_root() {
+    [ "$(id -u)" -eq 0 ] || die "this command changes printer settings; run it with sudo"
+}
+
+require_driver() {
+    [ -r "$PPD" ] || die "the driver is not installed ($PPD is missing)"
+}
+
+require_scheduler() {
+    LC_ALL=C lpstat -r 2>/dev/null | grep -qx 'scheduler is running' || die "the CUPS scheduler is not running; start CUPS and try again"
+}
+
+run_lpadmin() {
+    status=0
+    output=$(lpadmin "$@" 2>&1) || status=$?
+    printf '%s\n' "$output" | grep -v -e 'Printer drivers are deprecated' -e '^$' >&2 || true
+    return "$status"
+}
+
+validate_name() {
+    case $1 in
+        '' | -* | *[[:space:]/#\\\"\']*)
+            die "invalid queue name '$1': it must not be empty, start with -, or contain spaces, /, #, \\, ' or \""
+            ;;
+    esac
+    [ "${#1}" -le "$MAX_NAME_LENGTH" ] || die "invalid queue name '$1': it is longer than $MAX_NAME_LENGTH characters"
+}
+
+ppd_contents() {
+    case $PPD in
+        *.gz) gzip -dc "$PPD" ;;
+        *) cat "$PPD" ;;
+    esac
+}
+
+paper_sizes() {
+    ppd_contents | sed -n 's/^\*PageSize \([^/:]*\)[/:].*/\1/p'
+}
+
+supported_paper() {
+    paper_sizes | grep -ixF -- "$1" | head -n 1
+}
+
+user_locale() {
+    if [ -n "${SUDO_USER:-}" ] && [ "$SUDO_USER" != root ]; then
+        sudo -u "$SUDO_USER" defaults read -g AppleLocale 2>/dev/null || true
+    else
+        defaults read -g AppleLocale 2>/dev/null || true
+    fi
+}
+
+default_paper() {
+    country=
+    if [ "$PLATFORM" = macos ]; then
+        country=$(user_locale | sed -n 's/^[a-z]*_\([A-Z][A-Z]\).*/\1/p')
+    else
+        height=$(locale -k LC_PAPER 2>/dev/null | sed -n 's/^height=//p')
+        [ "$height" = 279 ] && country=US
+    fi
+    case $country in
+        US | CA | MX | CL | CO | VE | PH | PR | GT | CR | PA | DO | SV | NI | HN) echo Letter ;;
+        *) echo A4 ;;
+    esac
+}
+
+is_ipv6_address() {
+    case $1 in
+        *:*:*) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+host_of() {
+    authority=${1#*://}
+    authority=${authority%%/*}
+    authority=${authority%%\?*}
+    authority=${authority##*@}
+    case $authority in
+        \[*\]*)
+            host=${authority#\[}
+            host=${host%%\]*}
+            ;;
+        *) host=${authority%%:*} ;;
+    esac
+    printf '%s\n' "$host" | sed 's/%25/%/'
+}
+
+url_host() {
+    if is_ipv6_address "$1"; then
+        printf '[%s]\n' "$(printf '%s' "$1" | sed 's/%/%25/')"
+    else
+        printf '%s\n' "$1"
+    fi
+}
+
+snmp_host() {
+    if is_ipv6_address "$1"; then
+        printf 'udp6:[%s]\n' "$1"
+    else
+        printf '%s\n' "$1"
+    fi
+}
+
+tray_names() {
+    host=$1
+    names=
+    if command -v snmpwalk >/dev/null 2>&1; then
+        names=$(snmpwalk -v1 -c public -t 2 -r 1 -Oqv "$(snmp_host "$host")" "$TRAY_NAMES_OID" 2>/dev/null | tr -d '"' || true)
+    fi
+    if [ -z "$names" ] && command -v curl >/dev/null 2>&1; then
+        names=$(curl -fsS --max-time 5 "http://$(url_host "$host")/ews/status/status.htm" 2>/dev/null | LC_ALL=C tr -d '\000\r' |
+            LC_ALL=C tr '<>' '\n' | LC_ALL=C sed 's/^ *//; s/ *$//' | LC_ALL=C grep -E '^(Tray [0-9]+|Single Sheet Feeder.*)$' | sort -u || true)
+    fi
+    [ -n "$names" ] || return 1
+    printf '%s\n' "$names"
+}
+
+tray_module_for() {
+    host=$1
+    if ! names=$(tray_names "$host"); then
+        note "Could not read the paper trays from $host; setting up Tray 1." >&2
+        echo 1Tray-S
+        return 0
+    fi
+    if printf '%s\n' "$names" | grep -qi 'tray *2'; then
+        note "Found Tray 1 and Tray 2 on $host; setting up both, with Tray 1 as the default." >&2
+        echo 1+2Tray-SH
+    else
+        note "Found Tray 1 on $host." >&2
+        echo 1Tray-S
+    fi
+}
+
+command_add() {
+    target=
+    name=$DEFAULT_NAME
+    description=$MODEL
+    location=
+    paper=
+    protocol=lpd
+    make_default=false
+    shared=false
+    while [ $# -gt 0 ]; do
+        case $1 in
+            --name) [ $# -ge 2 ] || die "--name needs a value"; name=$2; shift 2 ;;
+            --description) [ $# -ge 2 ] || die "--description needs a value"; description=$2; shift 2 ;;
+            --location) [ $# -ge 2 ] || die "--location needs a value"; location=$2; shift 2 ;;
+            --paper) [ $# -ge 2 ] || die "--paper needs a value"; paper=$2; shift 2 ;;
+            --protocol) [ $# -ge 2 ] || die "--protocol needs a value"; protocol=$2; shift 2 ;;
+            --default) make_default=true; shift ;;
+            --shared) shared=true; shift ;;
+            -*) die "unknown option $1" ;;
+            *) [ -z "$target" ] || die "unexpected argument $1"; target=$1; shift ;;
+        esac
+    done
+    [ -n "$target" ] || die "add needs a printer address or device URI"
+    validate_name "$name"
+    case $target in
+        *://*) ;;
+        *:*) is_ipv6_address "$target" || die "$target looks like an address with a port; give a device URI such as socket://$target instead" ;;
+    esac
+    require_root
+    require_driver
+    require_scheduler
+
+    case $target in
+        *://*) uri=$target ;;
+        *)
+            case $protocol in
+                lpd) uri="lpd://$(url_host "$target")/" ;;
+                socket) uri="socket://$(url_host "$target"):9100" ;;
+                *) die "unknown protocol $protocol (use lpd or socket)" ;;
+            esac
+            ;;
+    esac
+
+    [ -n "$paper" ] || paper=$(default_paper)
+    requested_paper=$paper
+    paper=$(supported_paper "$requested_paper") || true
+    if [ -z "$paper" ]; then
+        die "unknown paper size $requested_paper; the driver supports: $(paper_sizes | tr '\n' ' ')"
+    fi
+
+    tray_module=1Tray-S
+    case $uri in
+        lpd://* | socket://* | ipp://* | http://*) tray_module=$(tray_module_for "$(host_of "$uri")") ;;
+    esac
+
+    run_lpadmin -p "$name" -E -v "$uri" -P "$PPD" -D "$description" -L "$location" \
+        -o "Option1=$tray_module" -o FXInputSlot=1stTray-S -o "PageSize=$paper" -o "printer-is-shared=$shared" ||
+        die "lpadmin could not create $name"
+    if [ "$make_default" = true ]; then
+        run_lpadmin -d "$name" || die "lpadmin could not make $name the default printer"
+    fi
+    note "Created $name at $uri (Tray 1, $paper paper)."
+}
+
+local_queues() {
+    LC_ALL=C lpstat -p 2>/dev/null | sed -n 's/^printer \([^ ]*\) .*/\1/p'
+}
+
+driver_queues() {
+    local_queues | while IFS= read -r queue; do
+        if lpoptions -p "$queue" 2>/dev/null | grep -q "printer-make-and-model='$MODEL'"; then
+            printf '%s\n' "$queue"
+        fi
+    done
+}
+
+uses_driver() {
+    driver_queues | grep -qixF -- "$1"
+}
+
+ppd_directory() {
+    printf '%s/ppd\n' "$(cups-config --serverroot 2>/dev/null || echo /etc/cups)"
+}
+
+chosen_options() {
+    queue_ppd=$(ppd_directory)/$1.ppd
+    [ -r "$queue_ppd" ] || return 1
+    ppd_text=$(tr -d '\r' < "$queue_ppd") || return 1
+    for option in $(printf '%s\n' "$ppd_text" | sed -n 's/^\*OpenUI \*\([A-Za-z0-9]*\).*/\1/p'); do
+        [ "$option" != PageRegion ] || continue
+        choice=$(printf '%s\n' "$ppd_text" | sed -n "s/^\\*Default$option: *//p" | head -n 1)
+        [ -z "$choice" ] || printf '%s=%s\n' "$option" "$choice"
+    done
+}
+
+command_remove() {
+    name=${1:-$DEFAULT_NAME}
+    validate_name "$name"
+    require_root
+    require_scheduler
+    lpstat -p "$name" >/dev/null 2>&1 || die "there is no print queue named $name"
+    uses_driver "$name" || die "$name does not use the $MODEL driver"
+    run_lpadmin -x "$name" || die "lpadmin could not remove $name"
+    note "Removed $name."
+}
+
+command_refresh() {
+    require_root
+    require_driver
+    require_scheduler
+    queues=$(driver_queues)
+    if [ -z "$queues" ]; then
+        note "No print queues use the $MODEL driver."
+        return 0
+    fi
+    failures=0
+    while IFS= read -r queue; do
+        if ! defaults=$(chosen_options "$queue") || [ -z "$defaults" ]; then
+            warn "could not read the settings of $queue from its PPD, so it was left unchanged"
+            failures=$((failures + 1))
+            continue
+        fi
+        if ! run_lpadmin -p "$queue" -P "$PPD"; then
+            warn "could not update $queue"
+            failures=$((failures + 1))
+            continue
+        fi
+        kept_all=true
+        while IFS= read -r option; do
+            [ -n "$option" ] || continue
+            if ! run_lpadmin -p "$queue" -o "$option"; then
+                warn "could not keep $option on $queue"
+                kept_all=false
+            fi
+        done <<OPTIONS
+$defaults
+OPTIONS
+        if [ "$kept_all" = true ]; then
+            note "Updated $queue to driver version $VERSION."
+        else
+            warn "updated $queue to driver version $VERSION, but some of its options were not kept"
+            failures=$((failures + 1))
+        fi
+    done <<QUEUES
+$queues
+QUEUES
+    [ "$failures" -eq 0 ] || die "$failures print queues could not be fully updated"
+}
+
+command_list() {
+    require_scheduler
+    queues=$(driver_queues)
+    if [ -z "$queues" ]; then
+        note "No print queues use the $MODEL driver."
+        return 0
+    fi
+    printf '%s\n' "$queues" | while IFS= read -r queue; do
+        uri=$(LC_ALL=C lpstat -v "$queue" 2>/dev/null | sed 's/^device for [^:]*: //')
+        printf '%s\t%s\n' "$queue" "$uri"
+    done
+}
+
+command_trays() {
+    [ $# -eq 1 ] || die "trays needs a printer address"
+    case $1 in
+        *://*) host=$(host_of "$1") ;;
+        *) host=$1 ;;
+    esac
+    tray_names "$host" || die "could not read the paper trays from $1"
+}
+
+command_uninstall() {
+    [ "$PLATFORM" = macos ] || die "on Linux, remove the driver with your package manager or 'make uninstall'"
+    require_root
+    require_scheduler
+    queues=$(driver_queues)
+    while IFS= read -r queue; do
+        [ -n "$queue" ] || continue
+        run_lpadmin -x "$queue" || die "lpadmin could not remove $queue"
+        note "Removed print queue $queue."
+    done <<QUEUES
+$queues
+QUEUES
+    rm -rf "$DRIVER_DIR"
+    rm -f "$PPD" "$MAN_DIR/dell1320c.1"
+    pkgutil --forget "$PACKAGE_ID" >/dev/null 2>&1 || true
+    note "Removed the $MODEL driver."
+    rm -f "$BIN_DIR/dell1320c"
+}
+
+[ $# -ge 1 ] || { usage >&2; exit 2; }
+command=$1
+shift
+case $command in
+    add) command_add "$@" ;;
+    remove) command_remove "$@" ;;
+    trays) command_trays "$@" ;;
+    list) command_list ;;
+    refresh) command_refresh ;;
+    uninstall) command_uninstall ;;
+    version | --version) note "$program $VERSION" ;;
+    help | -h | --help) usage ;;
+    *) usage >&2; exit 2 ;;
+esac

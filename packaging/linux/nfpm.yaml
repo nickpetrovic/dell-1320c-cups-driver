@@ -1,0 +1,102 @@
+name: dell1320c
+arch: ${ARCH}
+platform: linux
+version: ${VERSION}
+release: 1
+section: misc
+priority: optional
+maintainer: ${MAINTAINER}
+description: ${PACKAGE_DESCRIPTION}
+license: MIT AND LicenseRef-Fuji-Xerox
+changelog: changelog.yml
+
+rpm:
+  summary: CUPS printer driver for the Dell Color Laser 1320c
+
+contents:
+  - dst: /usr/share/dell1320c
+    type: dir
+    packager: rpm
+    file_info:
+      mode: 0755
+  - dst: /usr/share/ppd/dell1320c
+    type: dir
+    packager: rpm
+    file_info:
+      mode: 0755
+  - dst: /usr/share/licenses/dell1320c
+    type: dir
+    packager: rpm
+    file_info:
+      mode: 0755
+  - src: root/usr/lib/cups/filter/rastertodell1320c
+    dst: /usr/lib/cups/filter/rastertodell1320c
+    file_info:
+      mode: 0755
+  - src: root/usr/share/dell1320c/color
+    dst: /usr/share/dell1320c/color
+    type: tree
+  - src: root/usr/share/ppd/dell1320c/dell1320c.ppd
+    dst: /usr/share/ppd/dell1320c/dell1320c.ppd
+    file_info:
+      mode: 0644
+  - src: root/usr/bin/dell1320c
+    dst: /usr/bin/dell1320c
+    file_info:
+      mode: 0755
+  - src: root/usr/share/man/man1/dell1320c.1.gz
+    dst: /usr/share/man/man1/dell1320c.1.gz
+    packager: deb
+    file_info:
+      mode: 0644
+  - src: root/usr/share/man/man1/dell1320c.1.gz
+    dst: /usr/share/man/man1/dell1320c.1.gz
+    packager: rpm
+    type: doc
+    file_info:
+      mode: 0644
+  - src: copyright
+    dst: /usr/share/doc/dell1320c/copyright
+    packager: deb
+    file_info:
+      mode: 0644
+  - src: root/usr/share/doc/dell1320c/NOTICE
+    dst: /usr/share/doc/dell1320c/NOTICE
+    packager: deb
+    file_info:
+      mode: 0644
+  - src: LICENSE
+    dst: /usr/share/licenses/dell1320c/LICENSE
+    packager: rpm
+    file_info:
+      mode: 0644
+    type: license
+  - src: root/usr/share/doc/dell1320c/NOTICE
+    dst: /usr/share/licenses/dell1320c/NOTICE
+    packager: rpm
+    file_info:
+      mode: 0644
+    type: license
+
+scripts:
+  postinstall: postinstall.sh
+
+overrides:
+  deb:
+    depends:
+      - libc6 (>= 2.35)
+      - cups
+      - libcups2t64 | libcups2
+      - zlib1g
+    recommends:
+      - snmp
+      - curl
+  rpm:
+    depends:
+      - libc.so.6(GLIBC_2.35)(64bit)
+      - libcups.so.2()(64bit)
+      - libz.so.1()(64bit)
+      - cups
+    recommends:
+      - net-snmp-utils
+      - curl
